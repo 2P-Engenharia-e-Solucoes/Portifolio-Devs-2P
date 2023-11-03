@@ -6,7 +6,9 @@ import Css from "../assets/css.png"
 import ReactIcon from "../assets/react.png"
 import JavaScript from "../assets/javascript.png"
 import MongoDB from "../assets/mongodb.png"
+import Postgres from "../assets/postgres.webp" 
 import Axios from "../assets/axios.png"
+import MeCansei from "../assets/mecansei.gif"
 
 export const projectsObject = [
     {
@@ -17,6 +19,15 @@ export const projectsObject = [
             ReactIcon, MongoDB, JavaScript, Html, Css          
         ], 
         description: "Aplicativo Web para controle de finanças"
+    },
+    {
+        title: "Me Cansei",
+        image: MeCansei,
+        technologies: "React, PostgresSQL, JavaScript, HTML, CSS ",
+        icon: [
+            ReactIcon, Postgres, JavaScript, Html, Css          
+        ], 
+        description: "Aplicativo Web que simula um site de venda de produtos usados"
     },
     {
         title: "Track-It",
