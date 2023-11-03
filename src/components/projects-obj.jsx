@@ -6,6 +6,7 @@ import Css from "../assets/css.png"
 import ReactIcon from "../assets/react.png"
 import JavaScript from "../assets/javascript.png"
 import MongoDB from "../assets/mongodb.png"
+import Axios from "../assets/axios.png"
 
 export const projectsObject = [
     {
@@ -22,7 +23,7 @@ export const projectsObject = [
         image: TrackIt,
         technologies: "React, JavaScript, HTML, CSS",
         icon: [
-            ReactIcon, JavaScript, Html, Css          
+            ReactIcon, JavaScript, Html, Css, Axios          
         ], 
         description: "Aplicativo Web de acompanhamento de hábitos"
     },
@@ -31,9 +32,9 @@ export const projectsObject = [
         image: Cineflex,
         technologies: "React, JavaScript, HTML, CSS",
         icon: [
-            ReactIcon, JavaScript, Html, Css          
+            ReactIcon, JavaScript, Html, Css, Axios          
         ], 
-        description: "Aplicativo Web para reservas de assento de cinema"
+        description: "Aplicativo Web para reservas de ingresso e assento de cinema"
     },
 
 ]

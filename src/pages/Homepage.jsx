@@ -14,18 +14,6 @@ export default function Homepage() {
     return (
       <HomepageContainer>
         <Header />
-        {/* <CardsContainer>
-          {projectsObject.map((project, index) => (
-            <Card
-              key={index}
-              image={project.image}
-              title={project.title}
-              description={project.description}
-              technologies={project.technologies}
-              icon={project.icon}
-            />
-          ))}
-        </CardsContainer> */}
         <Swiper 
           slidesPerView={1}
           navigation={true} 

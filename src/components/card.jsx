@@ -34,17 +34,17 @@ const Details = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100%; /* Defina a altura como 100% */
+  height: 100%; 
   width: 80%;
-  text-align: justify;
+  text-align: left;
   padding: 5%;
-  font-size: 1rem; /* Tamanho de fonte responsivo */
+  font-size: 1rem; 
 `;
 
 const CardContainer = styled.div`
   display: flex;
   width: 50%;
-  height: 50%; /* Defina a altura desejada para o CardContainer */
+  height: 50%;
   margin: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -63,18 +63,18 @@ const Image = styled.img`
 `;
 
 const Title = styled.h1`
-  font-size: 2rem; /* Tamanho de fonte responsivo */
+  font-size: 2rem;
 `;
 
 const Description = styled.h3`
-  font-size: 1rem; /* Tamanho de fonte responsivo */
+  font-size: 1rem;
 `;
 
 const Technologies = styled.h3`
-  font-size: 1rem; /* Tamanho de fonte responsivo */
+  font-size: 1rem;
 `;
 
 const Icon = styled.img`
-  width: 10%;
-  height: 10%;
+  width: 20%;
+  height: 20%;
 `;
