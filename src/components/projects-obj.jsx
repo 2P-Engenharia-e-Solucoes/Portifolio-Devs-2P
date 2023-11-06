@@ -7,7 +7,6 @@ import ReactIcon from "../assets/react.png"
 import JavaScript from "../assets/javascript.png"
 import MongoDB from "../assets/mongodb.png"
 import Postgres from "../assets/postgres.webp" 
-import Axios from "../assets/axios.png"
 import MeCansei from "../assets/mecansei.gif"
 
 export const projectsObject = [
@@ -34,7 +33,7 @@ export const projectsObject = [
         image: TrackIt,
         technologies: "React, JavaScript, HTML, CSS",
         icon: [
-            ReactIcon, JavaScript, Html, Css, Axios          
+            ReactIcon, JavaScript, Html, Css,          
         ], 
         description: "Aplicativo Web de acompanhamento de hábitos"
     },
@@ -43,7 +42,7 @@ export const projectsObject = [
         image: Cineflex,
         technologies: "React, JavaScript, HTML, CSS",
         icon: [
-            ReactIcon, JavaScript, Html, Css, Axios          
+            ReactIcon, JavaScript, Html, Css,          
         ], 
         description: "Aplicativo Web para reservas de ingresso e assento de cinema"
     },
