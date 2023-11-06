@@ -4,6 +4,7 @@ import Header from "../components/header";
 import CardMobile from "../components/cardMobile.jsx";
 import CardDesktop from "../components/cardDesktop.jsx";
 import { projectsObject } from "../components/projects-obj.jsx";
+import { projectObjectDesk } from "../components/projects-obj.jsx";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { MdPhoneIphone, MdLaptop } from "react-icons/md";
 
@@ -55,11 +56,11 @@ export default function Homepage() {
           />
         ) : (
           <CardDesktop
-            image={projectsObject[currentIndex].imageDesktop}
-            title={projectsObject[currentIndex].title}
-            description={projectsObject[currentIndex].description}
-            technologies={projectsObject[currentIndex].technologies}
-            icon={projectsObject[currentIndex].icon}
+            image={projectObjectDesk[currentIndex].imageDesktop}
+            title={projectObjectDesk[currentIndex].title}
+            description={projectObjectDesk[currentIndex].description}
+            technologies={projectObjectDesk[currentIndex].technologies}
+            icon={projectObjectDesk[currentIndex].icon}
           />
         )}
         <NavButton onClick={nextSlide}>
@@ -74,7 +75,7 @@ const HomepageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
+
   min-height: 100vh;
   min-width: 100vw;
   @media (max-width: 650px) {

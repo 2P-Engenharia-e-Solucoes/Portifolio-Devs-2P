@@ -28,11 +28,10 @@ const CardContainer = styled.div`
   align-items: flex-start;
   justify-content: center;
   min-width: 300px;
-  width: 60%;
-  height: 60%;
+  width: 45%;
+  height: 45%;
   max-height: 800px;
   max-width: 800px;
-  margin: 20px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
