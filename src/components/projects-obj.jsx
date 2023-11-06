@@ -8,11 +8,13 @@ import JavaScript from "../assets/javascript.png"
 import MongoDB from "../assets/mongodb.png"
 import Postgres from "../assets/postgres.webp" 
 import MeCansei from "../assets/mecansei.gif"
+import TESTE from "../assets/TESTE.png"
 
 export const projectsObject = [
     {
         title: "MyWallet",
-        image: MyWallet,
+        imageMobile: MyWallet,
+        imageDesktop: TESTE,
         technologies: "React, MongoDB, JavaScript, HTML, CSS",
         icon: [
             ReactIcon, MongoDB, JavaScript, Html, Css          
@@ -21,7 +23,8 @@ export const projectsObject = [
     },
     {
         title: "Me Cansei",
-        image: MeCansei,
+        imageMobile: MeCansei,
+        imageDesktop: TESTE,
         technologies: "React, PostgresSQL, JavaScript, HTML, CSS ",
         icon: [
             ReactIcon, Postgres, JavaScript, Html, Css          
@@ -30,7 +33,8 @@ export const projectsObject = [
     },
     {
         title: "Track-It",
-        image: TrackIt,
+        imageMobile: TrackIt,
+        imageDesktop: TESTE,
         technologies: "React, JavaScript, HTML, CSS",
         icon: [
             ReactIcon, JavaScript, Html, Css,          
@@ -39,7 +43,8 @@ export const projectsObject = [
     },
     {
         title: "Cineflex",
-        image: Cineflex,
+        imageMobile: Cineflex,
+        imageDesktop: TESTE,
         technologies: "React, JavaScript, HTML, CSS",
         icon: [
             ReactIcon, JavaScript, Html, Css,          

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../components/header";
-import Card from "../components/cardMobile.jsx";
+import CardMobile from "../components/cardMobile.jsx";
+import CardDesktop from "../components/cardDesktop.jsx";
 import { projectsObject } from "../components/projects-obj.jsx";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { MdPhoneIphone, MdLaptop } from "react-icons/md";
+
 
 export default function Homepage() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedDevice, setSelectedDevice] = useState("mobile");
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -23,17 +27,41 @@ export default function Homepage() {
   return (
     <HomepageContainer>
       <Header />
+      <DeviceSelector>
+        <DeviceButton
+          selected={selectedDevice === "mobile"}
+          onClick={() => setSelectedDevice("mobile")}
+        >
+          <MdPhoneIphone size={20} />
+        </DeviceButton>
+        <DeviceButton
+          selected={selectedDevice === "desktop"}
+          onClick={() => setSelectedDevice("desktop")}
+        >
+          <MdLaptop size={20} />
+        </DeviceButton>
+      </DeviceSelector>
       <CarouselContainer>
         <NavButton onClick={prevSlide}>
           <MdArrowBack size={60} />
         </NavButton>
-        <Card
-          image={projectsObject[currentIndex].image}
-          title={projectsObject[currentIndex].title}
-          description={projectsObject[currentIndex].description}
-          technologies={projectsObject[currentIndex].technologies}
-          icon={projectsObject[currentIndex].icon}
-        />
+        {selectedDevice === "mobile" ? (
+          <CardMobile
+            image={projectsObject[currentIndex].imageMobile}
+            title={projectsObject[currentIndex].title}
+            description={projectsObject[currentIndex].description}
+            technologies={projectsObject[currentIndex].technologies}
+            icon={projectsObject[currentIndex].icon}
+          />
+        ) : (
+          <CardDesktop
+            image={projectsObject[currentIndex].imageDesktop}
+            title={projectsObject[currentIndex].title}
+            description={projectsObject[currentIndex].description}
+            technologies={projectsObject[currentIndex].technologies}
+            icon={projectsObject[currentIndex].icon}
+          />
+        )}
         <NavButton onClick={nextSlide}>
           <MdArrowForward size={60} />
         </NavButton>
@@ -43,36 +71,68 @@ export default function Homepage() {
 }
 
 const HomepageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 80px;
-    min-height: 100vh;
-    min-width: 100vw;
-    @media (max-width: 650px) {
-      max-width: 414px;
-      min-width: 414px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  min-height: 100vh;
+  min-width: 100vw;
+  @media (max-width: 650px) {
+    max-width: 414px;
+    min-width: 414px;
+  }
+`;
+
+const DeviceSelector = styled.div`
+  display: flex;
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  display: flex;
+  align-items: left;
+`;
+
+const DeviceButton = styled.button`
+  background-color: ${(props) => (props.selected ? "#174F80" : "transparent")};
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5%;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+ 
+
+  svg {
+    fill: ${(props) => (props.selected ? "#fff" : "#174F80")};
+  }
 `;
 
 const CarouselContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 896px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 896px;
 `;
 
 const NavButton = styled.button`
-    z-index: 10;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    svg {
+  svg {
+    fill: #174F80;
+    &:hover {
       fill: #007bff;
+      transform: scale(1.05); 
+      background-color: transparent;
     }
+  }
 `;

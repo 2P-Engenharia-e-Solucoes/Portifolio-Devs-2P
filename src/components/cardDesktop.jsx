@@ -2,77 +2,101 @@ import styled from "styled-components";
 import React from "react";
 
 export default function Card(props) {
-    let imagens = props.icon;
-    return (
-        <CardContainer>
-            <Image src={props.image} />
-            <Details>
-                <Title>{props.title}</Title>
-                <Description>{props.description}</Description>
-                <Technologies>{props.technologies}</Technologies>
-                <IconsContainer>
-                    {imagens.map((icon, index) => (<Icon key={index} src={icon}/>))}
-                </IconsContainer>
-            </Details>
-        </CardContainer>
-    );
+   let imagens = props.icon;
+  return (
+    <CardContainer>
+      <Image src={props.image} />
+      <Details>
+        <Title>{props.title}</Title>
+        <Description>{props.description}</Description>
+        <Technologies>{props.technologies}</Technologies>
+        <IconsContainer>
+        {imagens.map((icon, index) => (
+          <Icon
+            key={index}
+            src={icon}
+          />
+        ))}
+        </IconsContainer> 
+      </Details>
+    </CardContainer>
+  );
 }
 
 const CardContainer = styled.div`
-    position: relative;
-    display: flex;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 300px;
+  width: 60%;
+  height: 60%;
+  max-height: 800px;
+  max-width: 800px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s; 
+  cursor: pointer; 
+  &:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+  }
+  @media (max-width: 650px) {
     flex-wrap: wrap;
-    min-width: 400px;
-    height: 50%;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s; 
-    cursor: pointer; 
-    &:hover {
-        transform: scale(1.05); 
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    }
+    max-width: 300px;
+  }
 `;
 
 const Image = styled.img`
-    min-width: 300px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px 10px 0 0;
+  @media (max-width: 650px) {
+    width: 100%;
     border-radius: 10px 10px 0 0;
+    margin-bottom: 20px;
+  }
 `;
 
 const Details = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30%;
-    text-align: left;
-    padding: 5%;
-    font-size: 1em; 
-    @media (max-width: 650px) {
-        min-height: 300px;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 40%; 
+  padding: 5%;
+  font-size: 1rem; 
+  @media (max-width: 650px) {
+    min-height: 200px;
+    width: 100%;
+  }
+  @media (min-width: 650px) {
+    min-height: 200px;
+    width: 100%;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 2rem;
+`;
+
+const Description = styled.h3`
+  font-size: 1rem;
+`;
+
+const Technologies = styled.h3`
+  font-size: 1rem;
+`;
+
+const Icon = styled.img`
+  width: 50px;
+  height: 50px;
 `;
 
 const IconsContainer = styled.div`
     display: flex; 
+    max-width: 500px;
 `
-
-const Title = styled.h1`
-    font-size: 100px;
-    margin-bottom: 10px;
-`;
-
-const Description = styled.h3`
-    font-size: 1rem;
-    margin-bottom: 10px;
-`;
-
-const Technologies = styled.h3`
-    font-size: 1rem;
-    margin-bottom: 10px;
-`;
-
-const Icon = styled.img`
-    width: 20%;
-    height: 20%;
-`;
