@@ -17,42 +17,34 @@ export default function Card(props) {
             src={icon}
           />
         ))}
-        </IconsContainer>
-
-       
+        </IconsContainer> 
       </Details>
     </CardContainer>
   );
 }
 
-const IconsContainer = styled.div`
-    display: flex;
-    
-`
-const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%; 
-  width: 80%;
-  text-align: left;
-  padding: 5%;
-  font-size: 1rem; 
-`;
-
 const CardContainer = styled.div`
   display: flex;
-  width: 50%;
-  height: 50%;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 300px;
+  width: 60%;
+  height: 60%;
+  max-height: 800px;
+  max-width: 800px;
   margin: 20px;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: all 0.3s; 
   cursor: pointer; 
   &:hover {
     transform: scale(1.05); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+  }
+  @media (max-width: 650px) {
+    flex-wrap: wrap;
+    max-width: 300px;
   }
 `;
 
@@ -60,6 +52,32 @@ const Image = styled.img`
   width: 50%;
   height: 50%;
   border-radius: 10px 10px 0 0;
+  @media (max-width: 650px) {
+    width: 80%;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 20px;
+    min-height: 500px;
+  }
+`;
+
+const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 40%; 
+  height: 100%;
+  max-height: 100%;
+  padding: 5%;
+  font-size: 1rem; 
+  @media (max-width: 650px) {
+    min-height: 200px;
+    width: 100%;
+  }
+  @media (min-width: 650px) {
+    min-height: 300px;
+    width: 100%;
+  }
 `;
 
 const Title = styled.h1`
@@ -75,6 +93,11 @@ const Technologies = styled.h3`
 `;
 
 const Icon = styled.img`
-  width: 20%;
-  height: 20%;
+  width: 50px;
+  height: 50px;
 `;
+
+const IconsContainer = styled.div`
+    display: flex; 
+    max-width: 500px;
+`
