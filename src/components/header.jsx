@@ -13,6 +13,7 @@ export default function Header() {
 const HeaderContainer = styled.header`
     display: flex;
     position: fixed;
+    z-index: 100;
     justify-content: center;
     align-items: center;
     width: 100%;
