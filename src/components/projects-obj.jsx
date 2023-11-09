@@ -87,7 +87,7 @@ export const projectObjectDesk = [
         icon: [
             ReactIcon, Postgres, JavaScript, Html, Css          
         ], 
-        description: "Aplicativo Web de uma loja de livros"
+        description: "Aplicativo Web de uma loja de produtos variados"
     },
     {
         title: "Me Cansei",
