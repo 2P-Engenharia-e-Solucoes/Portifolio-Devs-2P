@@ -25,6 +25,13 @@ export default function Homepage() {
         gifRefs.current[index] = img;
       };
     });
+    projectObjectDesk.forEach((project, index) => {
+      const img = new Image();
+      img.src = project.imageDesktop;
+      img.onload = () => {
+        gifRefs.current[index + projectsObject.length] = img;
+      };
+    });
   }, []);
 
   const nextSlide = () => {
