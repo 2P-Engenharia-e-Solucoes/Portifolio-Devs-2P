@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Header from "../components/header";
 import CardMobile from "../components/cardMobile.jsx";
@@ -13,6 +13,20 @@ export default function Homepage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedDevice, setSelectedDevice] = useState("mobile");
 
+ 
+  const gifRefs = useRef([]);
+
+  
+  useEffect(() => {
+    projectsObject.forEach((project, index) => {
+      const img = new Image();
+      img.src = project.imageMobile;
+      img.onload = () => {
+        gifRefs.current[index] = img;
+      };
+    });
+  }, []);
+
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex < projectsObject.length - 1 ? prevIndex + 1 : 0
@@ -23,6 +37,18 @@ export default function Homepage() {
     setCurrentIndex((prevIndex) =>
       prevIndex > 0 ? prevIndex - 1 : projectsObject.length - 1
     );
+  };
+
+  const playGif = () => {
+    if (gifRefs.current[currentIndex]) {
+      gifRefs.current[currentIndex].play();
+    }
+  };
+
+  const pauseGif = () => {
+    if (gifRefs.current[currentIndex]) {
+      gifRefs.current[currentIndex].pause();
+    }
   };
 
   return (
