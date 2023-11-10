@@ -12,10 +12,7 @@ import { MdPhoneIphone, MdLaptop } from "react-icons/md";
 export default function Homepage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedDevice, setSelectedDevice] = useState("mobile");
-
- 
   const gifRefs = useRef([]);
-
   
   useEffect(() => {
     projectsObject.forEach((project, index) => {
@@ -29,7 +26,7 @@ export default function Homepage() {
       const img = new Image();
       img.src = project.imageDesktop;
       img.onload = () => {
-        gifRefs.current[index + projectsObject.length] = img;
+        gifRefs.current[index] = img;
       };
     });
   }, []);
@@ -44,18 +41,6 @@ export default function Homepage() {
     setCurrentIndex((prevIndex) =>
       prevIndex > 0 ? prevIndex - 1 : projectsObject.length - 1
     );
-  };
-
-  const playGif = () => {
-    if (gifRefs.current[currentIndex]) {
-      gifRefs.current[currentIndex].play();
-    }
-  };
-
-  const pauseGif = () => {
-    if (gifRefs.current[currentIndex]) {
-      gifRefs.current[currentIndex].pause();
-    }
   };
 
   return (
@@ -108,7 +93,7 @@ const HomepageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  overflow-x: none;
   min-height: 100vh;
   min-width: 100vw;
   @media (max-width: 650px) {
