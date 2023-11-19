@@ -12,24 +12,29 @@ import { MdPhoneIphone, MdLaptop } from "react-icons/md";
 export default function Homepage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedDevice, setSelectedDevice] = useState("mobile");
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const gifRefs = useRef([]);
   
   useEffect(() => {
-    projectsObject.forEach((project, index) => {
+  Promise.all([
+    ...projectsObject.map((project) => {
       const img = new Image();
       img.src = project.imageMobile;
-      img.onload = () => {
-        gifRefs.current[index] = img;
-      };
-    });
-    projectObjectDesk.forEach((project, index) => {
+      return new Promise((resolve) => {
+        img.onload = resolve;
+      });
+    }),
+    ...projectObjectDesk.map((project) => {
       const img = new Image();
       img.src = project.imageDesktop;
-      img.onload = () => {
-        gifRefs.current[index] = img;
-      };
-    });
-  }, []);
+      return new Promise((resolve) => {
+        img.onload = resolve;
+      });
+    }),
+  ]).then(() => {
+    setImagesLoaded(true);
+  });
+}, []);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -44,49 +49,55 @@ export default function Homepage() {
   };
 
   return (
-    <HomepageContainer>
-      <Header />
-      <DeviceSelector>
-        <DeviceButton
-          selected={selectedDevice === "mobile"}
-          onClick={() => setSelectedDevice("mobile")}
-        >
-          <MdPhoneIphone size={20} />
-        </DeviceButton>
-        <DeviceButton
-          selected={selectedDevice === "desktop"}
-          onClick={() => setSelectedDevice("desktop")}
-        >
-          <MdLaptop size={20} />
-        </DeviceButton>
-      </DeviceSelector>
-      <CarouselContainer>
-        <NavButton onClick={prevSlide}>
-          <MdArrowBack size={60} />
-        </NavButton>
-        {selectedDevice === "mobile" ? (
-          <CardMobile
-            image={projectsObject[currentIndex].imageMobile}
-            title={projectsObject[currentIndex].title}
-            description={projectsObject[currentIndex].description}
-            technologies={projectsObject[currentIndex].technologies}
-            icon={projectsObject[currentIndex].icon}
-          />
-        ) : (
-          <CardDesktop
-            image={projectObjectDesk[currentIndex].imageDesktop}
-            title={projectObjectDesk[currentIndex].title}
-            description={projectObjectDesk[currentIndex].description}
-            technologies={projectObjectDesk[currentIndex].technologies}
-            icon={projectObjectDesk[currentIndex].icon}
-          />
-        )}
-        <NavButton onClick={nextSlide}>
-          <MdArrowForward size={60} />
-        </NavButton>
-      </CarouselContainer>
-    </HomepageContainer>
-  );
+  <HomepageContainer>
+    {imagesLoaded ? (
+      <>
+        <Header />
+        <DeviceSelector>
+          <DeviceButton
+            selected={selectedDevice === "mobile"}
+            onClick={() => setSelectedDevice("mobile")}
+          >
+            <MdPhoneIphone size={20} />
+          </DeviceButton>
+          <DeviceButton
+            selected={selectedDevice === "desktop"}
+            onClick={() => setSelectedDevice("desktop")}
+          >
+            <MdLaptop size={20} />
+          </DeviceButton>
+        </DeviceSelector>
+        <CarouselContainer>
+          <NavButton onClick={prevSlide}>
+            <MdArrowBack size={60} />
+          </NavButton>
+          {selectedDevice === "mobile" ? (
+            <CardMobile
+              image={projectsObject[currentIndex].imageMobile}
+              title={projectsObject[currentIndex].title}
+              description={projectsObject[currentIndex].description}
+              technologies={projectsObject[currentIndex].technologies}
+              icon={projectsObject[currentIndex].icon}
+            />
+          ) : (
+            <CardDesktop
+              image={projectObjectDesk[currentIndex].imageDesktop}
+              title={projectObjectDesk[currentIndex].title}
+              description={projectObjectDesk[currentIndex].description}
+              technologies={projectObjectDesk[currentIndex].technologies}
+              icon={projectObjectDesk[currentIndex].icon}
+            />
+          )}
+          <NavButton onClick={nextSlide}>
+            <MdArrowForward size={60} />
+          </NavButton>
+        </CarouselContainer>
+      </>
+    ) : (
+      <div>Carregando...</div> // Componente de carregamento, pode ser personalizado
+    )}
+  </HomepageContainer>
+);
 }
 
 const HomepageContainer = styled.div`
